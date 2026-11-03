@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Clientes IF Goiás</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo-pagina">
+    <h1>Sistema de Gestão de Clientes (PF e PJ)</h1>
+    <p>Instituto Federal de Goiás • Laboratório de Informática da EJA</p>
+  </header>
+
+  <main class="painel-principal">
+    <section class="bloco-card">
+      <h2>Cadastrar Novo Cliente</h2>
+      <form id="formCliente">
+        <input type="hidden" id="clienteId">
+        <label for="tipoCliente">Tipo de Cadastro:</label>
+        <select id="tipoCliente">
+          <option value="PF">Pessoa Física (PF)</option>
+          <option value="PJ">Pessoa Jurídica (PJ)</option>
+        </select>
+
+        <label for="nome">Nome Completo / Razão Social:</label>
+        <input type="text" id="nome" required placeholder="Ex: Maria Pereira ou Silva LTDA">
+
+        <div id="campoPF">
+          <label for="cpf">Número do CPF:</label>
+          <input type="text" id="cpf" placeholder="000.000.000-00">
+        </div>
+
+        <div id="campoPJ" style="display: none;">
+          <label for="cnpj">Número do CNPJ:</label>
+          <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
+        </div>
+
+        <label for="whatsapp">WhatsApp (com DDD):</label>
+        <input type="text" id="whatsapp" placeholder="(62) 99999-8888">
+
+        <label for="email">E-mail de Contato:</label>
+        <input type="email" id="email" required placeholder="cliente@provedor.com">
+
+        <div class="linha-dupla">
+          <div>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" placeholder="Ex: Goiânia">
+          </div>
+          <div>
+            <label for="estado">UF:</label>
+            <input type="text" id="estado" maxlength="2" placeholder="GO">
+          </div>
+        </div>
+
+        <div class="grupo-botoes">
+          <button type="submit" id="btnSalvar" class="btn-principal">Salvar Cliente</button>
+          <button type="button" id="btnLimpar" class="btn-secundario">Limpar Formulário</button>
+        </div>
+      </form>
+      <div id="mensagem" class="aviso-status"></div>
+    </section>
+
+    <section class="bloco-card">
+      <h2>Tabela de Clientes Cadastrados</h2>
+      <div class="bloco-filtros">
+        <input type="text" id="filtroCidade" placeholder="Pesquisar por Cidade (ex: Anápolis)">
+        <button type="button" id="btnFiltrar" class="btn-acao">Filtrar</button>
+        <button type="button" id="btnListarTodos" class="btn-acao">Atualizar Lista</button>
+      </div>
+
+      <table id="tabelaClientes">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Nome / Razão Social</th>
+            <th>Documento</th>
+            <th>Cidade / UF</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela">
+          <tr>
+            <td colspan="6" style="text-align: center;">Aguardando conexão com o servidor...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/view/app.js"></script>
+  <script src="js/controller/ClienteController.js"></script>
+</body>
+</html>
