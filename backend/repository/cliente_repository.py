@@ -1,15 +1,18 @@
 from config.database import Database
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 class ClienteRepository:
     def inserir(self, cliente):
         conexao = Database.get_connection()
         if not conexao:
             return None
-        cursor = conexao.cursor(dictionary=True)
+        cursor = conexao.cursor(cursor_factory=RealDictCursor)
         sql = """
             INSERT INTO clientes 
             (tipo, nome, cpf, cnpj, razao_social, whatsapp, email, cidade, estado)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            RETURNING id
         """
         valores = (
             cliente.get("tipo"),
@@ -25,7 +28,9 @@ class ClienteRepository:
         try:
             cursor.execute(sql, valores)
             conexao.commit()
-            cliente["id"] = cursor.lastrowid
+            result = cursor.fetchone()
+            if result:
+                cliente["id"] = result["id"]
             return cliente
         except Exception as e:
             print(f"Erro ao inserir cliente: {e}")
@@ -38,7 +43,7 @@ class ClienteRepository:
         conexao = Database.get_connection()
         if not conexao:
             return []
-        cursor = conexao.cursor(dictionary=True)
+        cursor = conexao.cursor(cursor_factory=RealDictCursor)
         try:
             cursor.execute("SELECT * FROM clientes ORDER BY id DESC")
             return cursor.fetchall()
@@ -53,7 +58,7 @@ class ClienteRepository:
         conexao = Database.get_connection()
         if not conexao:
             return []
-        cursor = conexao.cursor(dictionary=True)
+        cursor = conexao.cursor(cursor_factory=RealDictCursor)
         condicoes = []
         valores = []
         if tipo:

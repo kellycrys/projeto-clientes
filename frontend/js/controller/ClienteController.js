@@ -1,6 +1,7 @@
 class ClienteController {
   constructor() {
-    this.apiUrl = 'http://localhost:5000/api/clientes';
+    // Altere o prefixo 'https://api-app-clientes.onrender.com' para o URL real do seu backend no Render
+    this.apiUrl = 'https://api-app-clientes.onrender.com/api/clientes';
   }
 
   async salvar(cliente) {
