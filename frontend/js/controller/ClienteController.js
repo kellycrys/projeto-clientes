@@ -1,7 +1,7 @@
 class ClienteController {
   constructor() {
     // URL pronta para receber a do Render, ex: 'https://seu-servico.onrender.com/api/clientes'
-    this.apiUrl = 'https://seu-servico.onrender.com/api/clientes';
+    this.apiUrl = 'https://projeto-clientes-hli0.onrender.com/api/clientes';
   }
 
   async salvar(cliente) {
