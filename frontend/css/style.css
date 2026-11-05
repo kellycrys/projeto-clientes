@@ -10,7 +10,7 @@ body {
   line-height: 1.4;
 }
 .topo-pagina {
-  background-color: #065f46;
+  background-color: #78350f;
   color: #ffffff;
   padding: 20px 15px;
   text-align: center;
@@ -45,8 +45,8 @@ body {
 }
 .bloco-card h2 {
   font-size: 18px;
-  color: #065f46;
-  border-bottom: 2px solid #a7f3d0;
+  color: #78350f;
+  border-bottom: 2px solid #fef08a;
   padding-bottom: 6px;
   margin-bottom: 14px;
 }
@@ -67,7 +67,7 @@ input, select {
   background-color: #f8fafc;
 }
 input:focus, select:focus {
-  outline: 2px solid #059669;
+  outline: 2px solid #ea580c;
   background-color: #ffffff;
 }
 .linha-dupla {
@@ -93,7 +93,7 @@ button:hover {
   opacity: 0.9;
 }
 .btn-principal {
-  background-color: #059669;
+  background-color: #ea580c;
   color: #ffffff;
   flex: 1;
 }
@@ -102,7 +102,7 @@ button:hover {
   color: #ffffff;
 }
 .btn-acao {
-  background-color: #0d9488;
+  background-color: #d97706;
   color: #ffffff;
 }
 .bloco-filtros {

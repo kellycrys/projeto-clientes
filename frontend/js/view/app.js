@@ -56,7 +56,7 @@ function limparFormulario() {
 
 function mostrarMensagem(texto, sucesso = true) {
   divMensagem.textContent = texto;
-  divMensagem.style.color = sucesso ? '#047857' : '#b91c1c';
+  divMensagem.style.color = sucesso ? '#b45309' : '#b91c1c';
   setTimeout(() => { divMensagem.textContent = ''; }, 4000);
 }
 
